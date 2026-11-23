@@ -37,6 +37,8 @@ The project has no test suite, linter, or formatter configured.
 | `f` | Facebook | `e` | email (rendered as `mailto:`) |
 | `t` | Twitter | `w` | WhatsApp number (rendered as `wa.me/`) |
 | `ig` | Instagram | `y` | YouTube |
+| `p` | profession / title | `lo` | location |
+| `ws` | personal website | | |
 | `ls` | links array: `{ l: label, i: icon key, u: url }` | | |
 
 `Templates/Simple.vue` also checks a key `m`, which the editor never sets.
