@@ -6,6 +6,9 @@
           v-model:name="data.n"
           v-model:desc="data.d"
           v-model:image="data.i"
+          v-model:profession="data.p"
+          v-model:location="data.lo"
+          v-model:website="data.ws"
         />
         <app-form-hr />
         <app-form-social-links
@@ -64,6 +67,9 @@ const data = ref({
   n: "",
   d: "",
   i: "",
+  p: "",
+  lo: "",
+  ws: "",
   f: "",
   t: "",
   ig: "",
@@ -81,6 +87,9 @@ const prefillDemoData = () => {
     n: "John Snow",
     d: "I’m John Snow, the king in the north. I know Nothing.",
     i: "https://i.insider.com/56743fad72f2c12a008b6cc0",
+    p: "King in the North",
+    lo: "Winterfell, The North",
+    ws: "https://www.winterfell.com/",
     f: "https://www.facebook.com/john_snow",
     t: "https://twitter.com/john_snow",
     ig: "https://www.instagram.com/john_snow",

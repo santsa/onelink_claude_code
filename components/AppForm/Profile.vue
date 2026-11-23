@@ -20,6 +20,21 @@
           />
         </div>
         <div>
+          <label for="profession" class="block text-sm font-medium text-gray-700"
+            >Profession</label
+          >
+          <input
+            type="text"
+            name="profession"
+            id="profession"
+            autocomplete="organization-title"
+            placeholder="Frontend developer"
+            :value="profession"
+            @input="$emit('update:profession', $event.target.value)"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder-slate-400"
+          />
+        </div>
+        <div>
           <label for="about" class="block text-sm font-medium text-gray-700"
             >About yourself</label
           >
@@ -34,6 +49,37 @@
               :value="desc"
               @input="$emit('update:desc', $event.target.value)"
             ></textarea>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="location" class="block text-sm font-medium text-gray-700"
+              >Location</label
+            >
+            <input
+              type="text"
+              name="location"
+              id="location"
+              placeholder="Madrid, Spain"
+              :value="location"
+              @input="$emit('update:location', $event.target.value)"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder-slate-400"
+            />
+          </div>
+          <div>
+            <label for="website" class="block text-sm font-medium text-gray-700"
+              >Website</label
+            >
+            <input
+              type="url"
+              name="website"
+              id="website"
+              placeholder="https://example.com"
+              :value="website"
+              @input="$emit('update:website', $event.target.value)"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder-slate-400"
+            />
           </div>
         </div>
 
@@ -55,5 +101,12 @@
   </base-form-section>
 </template>
 <script setup>
-const props = defineProps(["name", "desc", "image"]);
+const props = defineProps([
+  "name",
+  "desc",
+  "image",
+  "profession",
+  "location",
+  "website",
+]);
 </script>
