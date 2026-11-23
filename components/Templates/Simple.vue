@@ -17,7 +17,7 @@
         {{ acc.d }}
       </p>
       <div
-        v-if="acc.lo || acc.ws"
+        v-if="acc.lo || websiteHref"
         class="mt-3 flex items-center justify-center flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600"
       >
         <span v-if="acc.lo" class="flex items-center gap-1">
@@ -25,14 +25,14 @@
           {{ acc.lo }}
         </span>
         <a
-          v-if="acc.ws"
-          :href="acc.ws"
+          v-if="websiteHref"
+          :href="websiteHref"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-1 hover:underline"
         >
           <icon name="ph:globe-duotone" class="h-4 w-4" />
-          {{ displayUrl(acc.ws) }}
+          {{ displayUrl(websiteHref) }}
         </a>
       </div>
     </div>
@@ -108,6 +108,16 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+});
+
+// Page data comes from the URL, so anyone can craft it: only allow http(s)
+// links (blocks javascript:/data: XSS) and add https:// when no scheme is given.
+const websiteHref = computed(() => {
+  const url = (props.acc.ws || "").trim();
+  if (!url) return null;
+  if (/^https?:\/\//i.test(url)) return url;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return null;
+  return `https://${url}`;
 });
 
 // Text shown for the website link, e.g. "https://www.winterfell.com/" -> ?
