@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="min-h-screen bg-purple-200">
     <templates-simple v-if="decodedData" :acc="decodedData" />
     <div
       v-else

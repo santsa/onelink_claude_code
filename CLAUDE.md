@@ -49,4 +49,6 @@ The project has no test suite, linter, or formatter configured.
 
 **Icons.** The `nuxt-icon` module renders Iconify names (e.g. `ph:globe-duotone`). Users type link icon keys freely; the keys come from https://icones.js.org/.
 
+**Rendering & deploy.** `nuxt.config.ts` sets `ssr: false`, so the app is a client-only SPA. It is deployed to Vercel as a static site: `vercel.json` sets the build command to `yarn generate`, and Nitro writes the output to `.vercel/output/static`. Install runs `yarn install --ignore-engines` because Nuxt 3.1.1 declares support only up to Node 19, while Vercel builds with a much newer Node. Old Nitro also targets the `nodejs16.x` serverless runtime, which Vercel rejects. Upgrading Nuxt would remove the need for both workarounds.
+
 **Modules** (`nuxt.config.ts`): `@nuxtjs/tailwindcss` (with `@tailwindcss/forms`), `nuxt-icon`, `@vueuse/nuxt`. `@headlessui/vue` is transpiled. `AppForm/Links.vue` uses `vuedraggable` to reorder links.
